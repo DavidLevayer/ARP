@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//Src/jus/aor/mobilagent/hello/Hello.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/Agent.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/AgentInputStream.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/AgentServer.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/BAMAgentClassLoader.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/Etape.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/IOHandler.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/Route.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/Server.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/Starter.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/_Action.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/_Agent.java=UTF-8
+encoding//Src/jus/aor/mobilagent/kernel/_Service.java=UTF-8
