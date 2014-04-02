@@ -105,11 +105,14 @@ public final class Server {
 				Field f = a.getClass().getDeclaredField(etapeAction.get(i));
 				f.setAccessible(true);
 				_Action act = (_Action) f.get(a);
-				System.out.println("Step "+i+": "+etapeAddress.get(i));
 				Etape etap = new Etape(new URI(etapeAddress.get(i)), act);
 				a.addEtape(etap);
 			}
-			a.addEtape(new Etape(new URI(this.site),_Action.NIHIL));
+			
+			Field f = a.getClass().getDeclaredField("retour");
+			f.setAccessible(true);
+			_Action act = (_Action) f.get(a);
+			a.addEtape(new Etape(new URI(this.site), act));
 			
 			logger.log(Level.INFO,"...Agent successfully deployed");
 			new Thread(a).start();
@@ -118,7 +121,6 @@ public final class Server {
 			logger.log(Level.INFO," erreur durant le deploiement de l'agent"+this,ex);
 
 			// ajout la premiere et de la derniere étape
-
 
 			// envoyer (socket) sur la première etape
 

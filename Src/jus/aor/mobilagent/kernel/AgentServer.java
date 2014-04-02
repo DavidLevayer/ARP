@@ -57,7 +57,7 @@ public class AgentServer implements Runnable {
 				logger.log(Level.INFO,"Incoming Agent on "+name);
 				// Recovery of data
 				
-				InputStream input = soc.getInputStream();
+				//InputStream input = soc.getInputStream();
 				
 
 				// construire le classloader / associer le jar à la classe de l'agent
@@ -77,6 +77,7 @@ public class AgentServer implements Runnable {
 				// Initialiser l'agent
 				a.init(bam, this, this.name);
 				
+				logger.log(Level.INFO,"Receiving complete. Launching Agent!");
 				// Lancer l'agent sur un nouveau thread
 				new Thread(a).start();
 				

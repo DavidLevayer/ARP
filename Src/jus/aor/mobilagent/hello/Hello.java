@@ -1,14 +1,11 @@
 package jus.aor.mobilagent.hello;
-import jus.aor.mobilagent.kernel.Route;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import jus.aor.mobilagent.kernel.Etape;
 import jus.aor.mobilagent.kernel._Action;
 import jus.aor.mobilagent.kernel.Agent;
 
@@ -17,6 +14,8 @@ import jus.aor.mobilagent.kernel.Agent;
  * @author  Morat
  */
 public class Hello extends Agent{
+	
+	private List<String> dateList = new LinkedList<String>();
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,12 +39,24 @@ public class Hello extends Agent{
 		public void execute() {
 			// Print the date, so we can follow the progression of the agent
 			Date d = new Date();
-			DateFormat f = DateFormat.getDateTimeInstance();
+			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 			System.out.println(f.format(d));
+			dateList.add(f.format(d));
 		}
 	};
 
-	protected _Action retour(){
-		return doIt;
-	}
+	protected _Action retour = new _Action() {
+		
+		private static final long serialVersionUID = 1L;
+
+		public void execute() {
+			
+			System.out.println("HelloAgent: Hi! I've visited servers at following dates:");
+			for(int i =0; i<dateList.size();i++)
+				System.out.println(dateList.get(i));
+			System.out.println("End-----------------");
+
+		}
+	};
+
 }

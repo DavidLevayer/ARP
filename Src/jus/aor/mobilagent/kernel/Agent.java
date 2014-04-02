@@ -1,13 +1,12 @@
 package jus.aor.mobilagent.kernel;
 
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.jar.JarException;
-import java.util.logging.Logger;
 
 public class Agent implements _Agent {
 
@@ -21,7 +20,6 @@ public class Agent implements _Agent {
 
 	public void run() {
 		// This method is called when an agent arrives on a server
-		System.out.println("HelloWorld, I'm on "+serverName);
 		Etape e = roadmap.next();
 		e.getAction().execute();
 		// We have to execute the action linked to the step
@@ -66,10 +64,20 @@ public class Agent implements _Agent {
 			//myJar = new Jar("Src/"+className.replace('.', '/')+".java");
 			myJar = loader.getSavedJar();
 			
-			Etape next = roadmap.get();
+						
+			Etape next;
+			Boolean serverAvailable = false;
+			while(!serverAvailable && roadmap.hasNext) {
+				try {					
+					next = roadmap.get();
+					soc = new Socket(next.server.getHost(),next.server.getPort());
+					serverAvailable = true;
+				} catch (ConnectException e) {
+					serverAvailable = false;
+					next = roadmap.next();
+				}
+			}
 			
-			System.out.println("Trying to move to "+next.server.getHost()+":"+next.server.getPort());
-			soc = new Socket(next.server.getHost(),next.server.getPort());
 			out = soc.getOutputStream();
 
 			outputStream = new ObjectOutputStream(out);
@@ -87,10 +95,8 @@ public class Agent implements _Agent {
 		} catch (JarException e) {
 			this.agentServer.printOnLogger("Agent.java: can't create JAR");
 			e.printStackTrace();
-		} catch (IOException e) {
-			this.agentServer.printOnLogger("Agent.java: can't create the socket or etablish connection");
-			e.printStackTrace();			
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
