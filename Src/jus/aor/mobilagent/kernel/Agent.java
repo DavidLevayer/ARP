@@ -24,7 +24,7 @@ public class Agent implements _Agent {
 		e.getAction().execute();
 		// We have to execute the action linked to the step
 		if(roadmap.hasNext) {		
-			//Move to the next server ??
+			//Move to the next server
 			move();
 		}
 	}
@@ -65,7 +65,6 @@ public class Agent implements _Agent {
 		try {
 			
 			// prendre le jar et l'envoyer au serveur prochain
-			//myJar = new Jar("Src/"+className.replace('.', '/')+".java");
 			myJar = loader.getSavedJar();
 			
 						
