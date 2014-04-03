@@ -41,7 +41,7 @@ public class Hello extends Agent{
 			Date d = new Date();
 			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 			System.out.println(f.format(d));
-			dateList.add(f.format(d));
+			dateList.add(getServerName()+" at "+f.format(d));
 		}
 	};
 

@@ -28,6 +28,10 @@ public class Agent implements _Agent {
 			move();
 		}
 	}
+	
+	public String getServerName() {
+		return this.serverName;
+	}
 
 	public void init(AgentServer agentServer, String serverName) {
 		this.agentServer = agentServer;
