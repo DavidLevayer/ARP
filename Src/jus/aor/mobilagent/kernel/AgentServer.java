@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +17,8 @@ public class AgentServer implements Runnable {
 	protected int port=10140;
 	// Lifetime of the agentServer
 	private boolean alive = true;
+	// Service list
+	private Map<String,_Service<?>> serviceList;
 	
 	private Logger logger;
 	
@@ -25,12 +29,14 @@ public class AgentServer implements Runnable {
 		this.backlog = backlog;
 		this.logger = logger;
 		this.name = name;
+		serviceList = new HashMap<String,_Service<?>>();
 	}
 	
 	public AgentServer(int port, Logger logger, String name) {
 		this.port = port;
 		this.logger = logger;
 		this.name = name;
+		serviceList = new HashMap<String,_Service<?>>();
 	}
 
 	/*
@@ -55,12 +61,10 @@ public class AgentServer implements Runnable {
 				logger.log(Level.INFO,"Incoming Agent on "+name);
 				// Recovery of data
 				
-				//InputStream input = soc.getInputStream();
-				
+				//InputStream input = soc.getInputStream();				
 
 				// construire le classloader / associer le jar à la classe de l'agent
-				BAMAgentClassLoader bam = new BAMAgentClassLoader(new URL[]{}, this.getClass().getClassLoader());
-				
+				BAMAgentClassLoader bam = new BAMAgentClassLoader(new URL[]{}, this.getClass().getClassLoader());				
 
 				// Construire le flux de reception de l'agent
 				AgentInputStream ais = new AgentInputStream(soc.getInputStream(), bam);
@@ -93,6 +97,14 @@ public class AgentServer implements Runnable {
 			System.out.println("AgentServer: 404 class not found");
 			e.printStackTrace();
 		}
+	}
+	
+	public void addService (String name,_Service<?> s) {
+		this.serviceList.put(name,s);
+	}
+	
+	public _Service<?> getService(String name) {
+		return serviceList.get(name);
 	}
 	
 	public int getPort() {

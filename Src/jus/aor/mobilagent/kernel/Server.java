@@ -70,7 +70,20 @@ public final class Server {
 	 */
 	public final void addService(String name, String classeName, String codeBase, Object... args) {
 		try {
-			// TODO
+			
+			logger.log(Level.INFO,"Deploying service based on "+codeBase+"...");
+			
+			BAMServerClassLoader loader = new BAMServerClassLoader(new URL[]{},this.getClass().getClassLoader());
+			loader.addURL(codeBase);
+			
+			@SuppressWarnings("unchecked")
+			Class<_Service<?>> serviceClasse = (Class<_Service<?>>)Class.forName(classeName,true,loader);
+			
+			_Service<?> s = (_Service<?>) serviceClasse.getConstructor(Object[].class).newInstance(new Object[]{args});
+			
+			as.addService(name,s);
+			
+			logger.log(Level.INFO,"...Service successfully deployed");			
 
 		}catch(Exception ex){
 			logger.log(Level.INFO," erreur durant le lancement du serveur"+this,ex);
@@ -119,11 +132,6 @@ public final class Server {
 
 		}catch(Exception ex){
 			logger.log(Level.INFO," erreur durant le deploiement de l'agent"+this,ex);
-
-			// ajout la premiere et de la derniere étape
-
-			// envoyer (socket) sur la première etape
-
 		}
 	}
 }

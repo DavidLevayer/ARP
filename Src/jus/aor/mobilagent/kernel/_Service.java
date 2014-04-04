@@ -12,9 +12,10 @@ public interface _Service<T> {
 
 	/**
 	 * Generic call of a service
-	 * @param params paramters of the service
+	 * @param params parameters of the service
 	 * @return result returned by the service
 	 * @throws IllegalArgumentException
 	 */
 	public T call(Object... params) throws IllegalArgumentException;
+	
 }

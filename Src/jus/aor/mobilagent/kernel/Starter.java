@@ -92,6 +92,7 @@ public class Starter{
 			classeName = attrs.getNamedItem("class").getNodeValue();
 			args = attrs.getNamedItem("args").getNodeValue().split(" ");
 			name = attrs.getNamedItem("name").getNodeValue();
+			logger.log(Level.INFO,"Adding a service named "+name);
 			addService(name, classeName, codeBase, args);
 		}
 	}
