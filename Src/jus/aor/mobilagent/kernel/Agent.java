@@ -6,6 +6,7 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.jar.JarException;
 
 public class Agent implements _Agent {
@@ -17,6 +18,7 @@ public class Agent implements _Agent {
 	private transient String serverName;
 	private transient BAMAgentClassLoader loader;
 	protected String className;
+	protected long date;
 
 	public void run() {
 		// This method is called when an agent arrives on a server
@@ -36,6 +38,7 @@ public class Agent implements _Agent {
 	public void init(AgentServer agentServer, String serverName) {
 		this.agentServer = agentServer;
 		this.serverName = serverName;
+		this.date = new Date().getTime();
 		if(roadmap==null) {
 			try {
 				roadmap = new Route(new Etape(new URI(serverName), _Action.NIHIL));
@@ -48,7 +51,8 @@ public class Agent implements _Agent {
 	public void init(BAMAgentClassLoader loader, AgentServer server,
 			String serverName) {
 		this.init(server,serverName);
-		this.loader = loader;		
+		this.loader = loader;
+		this.date = new Date().getTime();
 	}
 
 	public void addEtape(Etape etape) {
