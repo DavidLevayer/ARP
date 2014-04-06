@@ -78,7 +78,7 @@ public class Starter{
 	}
 	@SuppressWarnings("unchecked")
 	protected void createServer(int port, String name) throws MalformedURLException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
-		loader = new BAMServerClassLoader(new URL[]{new URL("file:///.../MobilagentServer.jar")},this.getClass().getClassLoader());
+		loader = new BAMServerClassLoader(new URL[]{new URL("file:///Jar/MobilagentServerRMI.jar")},this.getClass().getClassLoader());
 		classe = (Class<jus.aor.mobilagent.kernelRMI.Server>)Class.forName("jus.aor.mobilagent.kernelRMI.Server",true,loader);
 		server = classe.getConstructor(int.class,String.class, Logger.class).newInstance(port,name,logger);
 	}

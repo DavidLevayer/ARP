@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import jus.aor.mobilagent.classRMI.Supplier;
+import jus.aor.mobilagent.kernel.BAMServerClassLoader;
 
 /**
  * Main server, which allows the launch of a server of mobile agents. It also provides functions 
@@ -80,7 +81,9 @@ public final class Server {
 			
 			logger.log(Level.INFO,"Deploying service based on "+codeBase+"...");
 			
-			BAMServerClassLoader loader = new BAMServerClassLoader(new URL[]{},this.getClass().getClassLoader());
+			//BAMServerClassLoader loader = new BAMServerClassLoader(new URL[]{},this.getClass().getClassLoader());
+			BAMServerClassLoader loader = new BAMServerClassLoader(new URL[]{new URL("file:///"+codeBase)},this.getClass().getClassLoader());
+			
 			loader.addURL(codeBase);
 			
 			@SuppressWarnings("unchecked")
@@ -124,7 +127,8 @@ public final class Server {
 			logger.log(Level.INFO,"Deploying Agent based on "+codeBase+"...");
 			_Agent a;
 			
-			BAMAgentClassLoader loader = new BAMAgentClassLoader(new URL[]{},this.getClass().getClassLoader());
+			//BAMAgentClassLoader loader = new BAMAgentClassLoader(new URL[]{},this.getClass().getClassLoader());
+			BAMAgentClassLoader loader = new BAMAgentClassLoader(new URL[]{new URL("file:///"+codeBase)},this.getClass().getClassLoader());
 			loader.addURL(codeBase);
 			
 			@SuppressWarnings("unchecked")
