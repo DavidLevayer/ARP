@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<root>
+<hotel name="Novotel" localisation="Paris" />
+<hotel name="Novotel1" localisation="Marseille" />
+<hotel name="Novotel2" localisation="Lille" />
+<hotel name="Formule1" localisation="Lyon" />
+<hotel name="Formule1" localisation="Paris" />
+</root>

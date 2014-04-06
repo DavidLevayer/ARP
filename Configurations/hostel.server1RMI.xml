@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE HTML PUBLIC  "-//W3C//DTD HTML 4.0 Transitional//EN" "Server.dtd"> 
+<server>
+	<port value="2222"/>
+	<service name="Hotels" codebase="Jar/HotelServiceRMI.jar" class="jus.aor.mobilagent.hotelRMI.HotelService" args="DataStore/Hotels1.xml"/>
+</server>
+
