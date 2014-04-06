@@ -2,5 +2,6 @@
 <!DOCTYPE HTML PUBLIC  "-//W3C//DTD HTML 4.0 Transitional//EN" "Server.dtd"> 
 <server>
 	<port value="3333"/>
-	<service name="Hotels" codebase="Jar/HotelService.jar" class="jus.aor.mobilagent.hotel.HotelService" args="DataStore/Hotels2.xml"/>
+	<service name="Hotels" codebase="Jar/HotelServiceRMI.jar" class="jus.aor.mobilagent.hotelRMI.HotelService" args="DataStore/Hotels2.xml"/>
 </server>
+
