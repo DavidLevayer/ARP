@@ -41,6 +41,7 @@ public class Starter{
 	 * @param args
 	 */
 	public Starter(String... args){
+		
 		// recuperation du niveau de log
 		java.util.logging.Level level;
 		try {
@@ -57,6 +58,7 @@ public class Starter{
 //			logger.setUseParentHandlers(false);
 			logger.addHandler(new IOHandler());
 			logger.setLevel(level);
+			logger.log(Level.INFO,"STARTER SOCKET");
 			/* Recuperation d'informations de configuration */
 			DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			doc = docBuilder.parse(new File(args[0]));

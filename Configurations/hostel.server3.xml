@@ -2,6 +2,6 @@
 <!DOCTYPE HTML PUBLIC  "-//W3C//DTD HTML 4.0 Transitional//EN" "Server.dtd"> 
 <root>
 	<port value="4444"/>
-	<service name="Telephones" codebase="Jar/AnnuaireService.jar" class="jus.aor.mobilagent.hotel.AnnuaireService" args="DataStore/Annuaire.xml"/>
+	<service name="Telephones" codebase="Jar/AnnuaireService.jar" class="jus.aor.mobilagent.hotelRMI.AnnuaireService" args="DataStore/Annuaire.xml"/>
 </root>
 
