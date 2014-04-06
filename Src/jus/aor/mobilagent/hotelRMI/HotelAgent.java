@@ -55,7 +55,7 @@ public class HotelAgent extends Agent {
 
 		@SuppressWarnings("unchecked")
 		public void execute() {
-			//Getting access to the HotelService
+			//Getting access to the AnnuaireService
 			try {
 				Registry r = LocateRegistry.getRegistry("localhost",new Integer(serverName.substring(serverName.length()-4,serverName.length())));
 				ISupplier obj = (ISupplier) r.lookup("rmi://"+serverName+"/Telephones");

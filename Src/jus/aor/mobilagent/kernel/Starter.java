@@ -79,7 +79,7 @@ public class Starter{
 	protected void createServer(int port, String name) throws MalformedURLException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		loader = new BAMServerClassLoader(new URL[]{new URL("file:///.../MobilagentServer.jar")},this.getClass().getClassLoader());
 		classe = (Class<jus.aor.mobilagent.kernel.Server>)Class.forName("jus.aor.mobilagent.kernel.Server",true,loader);
-		server = classe.getConstructor(int.class,String.class).newInstance(port,name);
+		server = classe.getConstructor(int.class,String.class,Logger.class).newInstance(port,name,logger);
 	}
 	/**
 	 * Ajoute les services definis dans le fichier de configuration
@@ -94,7 +94,7 @@ public class Starter{
 			classeName = attrs.getNamedItem("class").getNodeValue();
 			args = attrs.getNamedItem("args").getNodeValue().split(" ");
 			name = attrs.getNamedItem("name").getNodeValue();
-			logger.log(Level.INFO,"Adding a service named "+name);
+			logger.log(Level.INFO,"\nAdding a service named "+name);
 			addService(name, classeName, codeBase, args);
 		}
 	}
@@ -132,7 +132,7 @@ public class Starter{
 				serverAction.add(attrsEtape.getNamedItem("action").getNodeValue());
 				serverAddress.add(attrsEtape.getNamedItem("server").getNodeValue());
 			}
-			logger.log(Level.INFO,"Launching new "+classeName);
+			logger.log(Level.INFO,"\nLaunching new "+classeName);
 			deployAgent(classeName, args, codeBase,serverAddress, serverAction);
 		}
 	}

@@ -1,7 +1,6 @@
 package jus.aor.mobilagent.kernelRMI;
 
 import java.lang.reflect.Field;
-import java.net.InetAddress;
 import java.net.URI;
 import java.net.URL;
 import java.rmi.RMISecurityManager;
@@ -39,13 +38,13 @@ public final class Server {
 	 * @param port Listening port for the mobile agent server
 	 * @param name Name of the server
 	 */
-	public Server(final int port, final String name){
+	public Server(final int port, final String name, Logger loggerParent){
 
 		try {
 			// Set the logger in order to print a trace of the process
-			loggerName = "jus/aor/mobilagent/"+InetAddress.getLocalHost().getHostName()+"/"+name;
-			logger=Logger.getLogger(loggerName);
-			
+			//loggerName = "jus/aor/mobilagent/"+InetAddress.getLocalHost().getHostName()+"/"+name;
+			//logger=Logger.getLogger(loggerName);
+			logger = loggerParent;
 			logger.log(Level.INFO, "Starting of the server; name:"+name+" port:"+port);
 
 			site = "tpmobileagent://localhost:"+port+"/";
@@ -105,7 +104,7 @@ public final class Server {
 			Supplier mySupply = new Supplier(s);
 			registry.rebind("rmi://localhost:"+this.port+"/"+name,mySupply);
 			System.out.println("rmi://localhost:"+this.port+"/"+name);
-			logger.log(Level.INFO,"...Service successfully deployed");			
+			logger.log(Level.INFO,"                 ...Service successfully deployed!\n\n");			
 
 		}catch(Exception ex){
 			logger.log(Level.INFO," erreur durant le lancement du serveur"+this,ex);
@@ -149,7 +148,7 @@ public final class Server {
 			_Action act = (_Action) f.get(a);
 			a.addEtape(new Etape(new URI(this.site), act));
 			
-			logger.log(Level.INFO,"...Agent successfully deployed");
+			logger.log(Level.INFO,"           ...Agent successfully deployed");
 			new Thread(a).start();
 
 		}catch(Exception ex){

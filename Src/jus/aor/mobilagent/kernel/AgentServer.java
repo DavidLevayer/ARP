@@ -58,7 +58,7 @@ public class AgentServer implements Runnable {
 				// Waiting for an agent to arrive
 				soc = serverTCPSoc.accept();
 				
-				logger.log(Level.INFO,"Incoming Agent on "+name);
+				logger.log(Level.INFO,"\nIncoming Agent on "+name);
 				// Recovery of data
 				
 				//InputStream input = soc.getInputStream();				

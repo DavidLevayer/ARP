@@ -1,12 +1,12 @@
 package jus.aor.mobilagent.kernel;
 
 import java.lang.reflect.Field;
-import java.net.InetAddress;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  * Main server, which allows the launch of a server of mobile agents. It also provides functions 
@@ -34,13 +34,16 @@ public final class Server {
 	 * @param port Listening port for the mobile agent server
 	 * @param name Name of the server
 	 */
-	public Server(final int port, final String name){
+	public Server(final int port, final String name, Logger loggerParent){
 
 		try {
 			// Set the logger in order to print a trace of the process
-			loggerName = "jus/aor/mobilagent/"+InetAddress.getLocalHost().getHostName()+"/"+name;
-			logger=Logger.getLogger(loggerName);
-			
+			//loggerName = "jus/aor/mobilagent/"+InetAddress.getLocalHost().getHostName()+"/"+name;
+			//logger=Logger.getLogger(loggerName);
+
+			//logger.setUseParentHandlers(true);
+			//logger.setLevel(Level.parse(System.getProperty("LEVEL")));
+			this.logger = loggerParent;
 			logger.log(Level.INFO, "Starting of the server; name:"+name+" port:"+port);
 
 			site = "tpmobileagent://localhost:"+port+"/";
@@ -83,10 +86,10 @@ public final class Server {
 			
 			as.addService(name,s);
 			
-			logger.log(Level.INFO,"...Service successfully deployed");			
+			logger.log(Level.INFO,"                 ...Service successfully deployed!\n\n");
 
 		}catch(Exception ex){
-			logger.log(Level.INFO," erreur durant le lancement du serveur"+this,ex);
+			logger.log(Level.INFO," erreur durant le lancement du service"+this,ex);
 			return;
 		}
 	}
@@ -127,7 +130,7 @@ public final class Server {
 			_Action act = (_Action) f.get(a);
 			a.addEtape(new Etape(new URI(this.site), act));
 			
-			logger.log(Level.INFO,"...Agent successfully deployed");
+			logger.log(Level.INFO,"           ...Agent successfully deployed");
 			new Thread(a).start();
 
 		}catch(Exception ex){
