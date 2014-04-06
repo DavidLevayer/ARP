@@ -64,9 +64,8 @@ public class Agent implements _Agent {
 		
 		try {
 			
-			// prendre le jar et l'envoyer au serveur prochain
-			myJar = loader.getSavedJar();
-			
+			// Send the Jar file to the next server
+			myJar = loader.getSavedJar();		
 						
 			Etape next;
 			Boolean serverAvailable = false;
@@ -87,10 +86,10 @@ public class Agent implements _Agent {
 
 			outputStream.writeObject(myJar);
 
-			// envoyer l'agent
+			// send the agent
 			outputStream.writeObject(this);
 
-			// libérer les ressources
+			// Free resources
 			outputStream.close();
 			out.close();
 			soc.close();

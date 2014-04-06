@@ -11,7 +11,7 @@ import jus.aor.mobilagent.kernel.Agent;
 
 /**
  * Basic tests class for BAM
- * @author  Morat
+ * @authors Morat, Ginoux, Levayer, Mariage  
  */
 public class Hello extends Agent{
 	

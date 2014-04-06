@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Define the agent's road map
- * @author  Morat
+ * @author  David
  */
 public class Route implements Iterable<Etape>, Serializable{
 	

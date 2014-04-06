@@ -3,7 +3,7 @@
 <server>
 	<port value="1111"/>
 
-	<agent class="jus.aor.mobilagent.hotelRMI.HotelAgent" codebase="Jar/HotelService.jar" args="Paris">
+	<agent class="jus.aor.mobilagent.hotel.HotelAgent" codebase="Jar/HotelService.jar" args="Vallon">
 		<etape server="mobilagent://localhost:2222/" action="findHotel" />
 		<etape server="mobilagent://localhost:3333/" action="findHotel" />
 		<etape server="mobilagent://localhost:4444/" action="findTelephone" />

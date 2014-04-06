@@ -63,27 +63,27 @@ public class AgentServer implements Runnable {
 				
 				//InputStream input = soc.getInputStream();				
 
-				// construire le classloader / associer le jar à la classe de l'agent
+				// Build the classLoader
 				BAMAgentClassLoader bam = new BAMAgentClassLoader(new URL[]{}, this.getClass().getClassLoader());				
 
-				// Construire le flux de reception de l'agent
+				// Build the stream for getting the Jar file
 				AgentInputStream ais = new AgentInputStream(soc.getInputStream(), bam);
 				
-				// Récupere le jar
+				// Get the JAr file
 				jarBinks = (Jar) ais.readObject();
 
 				bam.addExtraClasses(jarBinks);
 				
-				// récuperer l'agent
+				// Get the agent
 				_Agent a = (_Agent) ais.readObject();
-				// Initialiser l'agent
+				// Initialize it
 				a.init(bam, this, this.name);
 				
 				logger.log(Level.INFO,"Receiving complete. Launching Agent!");
-				// Lancer l'agent sur un nouveau thread
+				// Launch it on a new Thread
 				new Thread(a).start();
 				
-				// Fermer le flux
+				// Close the stream
 				ais.close();
 				
 			}

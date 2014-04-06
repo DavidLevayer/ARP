@@ -3,8 +3,6 @@ package jus.aor.mobilagent.kernel;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
-
 import jus.util.Dialogue;
 
 /**

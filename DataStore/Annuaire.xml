@@ -10000,6 +10000,9 @@
 <Telephone name="Chaine0Hotel9997" numero="4876127906"/>
 <Telephone name="Chaine0Hotel9998" numero="2108598263"/>
 <Telephone name="Chaine0Hotel9999" numero="1028941163"/>
+<Telephone name="Chaine0Hotel10000" numero="0101010101"/>
+<Telephone name="Chaine0Hotel10001" numero="0202020202"/>
+<Telephone name="Chaine0Hotel10002" numero="0303030303"/>
 <Telephone name="Chaine1Hotel0" numero="3560215489"/>
 <Telephone name="Chaine1Hotel1" numero="4366880787"/>
 <Telephone name="Chaine1Hotel2" numero="3634784697"/>
@@ -20000,6 +20003,9 @@
 <Telephone name="Chaine1Hotel9997" numero="4412038180"/>
 <Telephone name="Chaine1Hotel9998" numero="2649069116"/>
 <Telephone name="Chaine1Hotel9999" numero="5945297549"/>
+<Telephone name="Chaine1Hotel10000" numero="0404040404"/>
+<Telephone name="Chaine1Hotel10001" numero="0505050505"/>
+<Telephone name="Chaine1Hotel10002" numero="0606060606"/>
 <Telephone name="Chaine2Hotel0" numero="3839641463"/>
 <Telephone name="Chaine2Hotel1" numero="2668696545"/>
 <Telephone name="Chaine2Hotel2" numero="3203983344"/>
@@ -30000,6 +30006,9 @@
 <Telephone name="Chaine2Hotel9997" numero="4634686087"/>
 <Telephone name="Chaine2Hotel9998" numero="3865043643"/>
 <Telephone name="Chaine2Hotel9999" numero="5004914817"/>
+<Telephone name="Chaine2Hotel10000" numero="0707070707"/>
+<Telephone name="Chaine2Hotel10001" numero="0808080808"/>
+<Telephone name="Chaine2Hotel10002" numero="0909090909"/>
 <Telephone name="Chaine3Hotel0" numero="3118066560"/>
 <Telephone name="Chaine3Hotel1" numero="1404071338"/>
 <Telephone name="Chaine3Hotel2" numero="3923317174"/>
@@ -40000,4 +40009,7 @@
 <Telephone name="Chaine3Hotel9997" numero="3534217400"/>
 <Telephone name="Chaine3Hotel9998" numero="5855964825"/>
 <Telephone name="Chaine3Hotel9999" numero="3760669330"/>
+<Telephone name="Chaine3Hotel10000" numero="0101010101"/>
+<Telephone name="Chaine3Hotel10001" numero="0202020202"/>
+<Telephone name="Chaine3Hotel10002" numero="0303030303"/>
 </root>

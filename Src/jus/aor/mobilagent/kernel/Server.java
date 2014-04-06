@@ -91,12 +91,12 @@ public final class Server {
 		}
 	}
 	/**
-	 * deploie l'agent caracterise par les arguments sur le serveur
-	 * @param classeName classe du service
-	 * @param args arguments de construction de l'agent
-	 * @param codeBase codebase du service
-	 * @param etapeAddress la liste des adresse des etapes
-	 * @param etapeAction la liste des actions des etapes
+	 * Deploy an agent
+	 * @param classeName class of the agent
+	 * @param args parameters of the agent
+	 * @param codeBase byte code of the agent class
+	 * @param etapeAddress step list of the agent's road map
+	 * @param etapeAction action list of the agent's road map
 	 */
 	public final void deployAgent(String classeName, Object[] args, String codeBase, List<String> etapeAddress, List<String> etapeAction) {
 		try {
@@ -113,7 +113,7 @@ public final class Server {
 			a.init(loader,this.as, this.name);
 
 			a.addEtape(new Etape(new URI(this.site),_Action.NIHIL));
-			// creer la route de l'agent
+			// Creation of the road map
 			for(int i = 0; i < etapeAction.size();i++) {
 				Field f = a.getClass().getDeclaredField(etapeAction.get(i));
 				f.setAccessible(true);

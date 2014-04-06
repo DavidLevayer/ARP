@@ -41,22 +41,17 @@ public class BAMServerClassLoader extends URLClassLoader {
 	
 	public void addExtraClasses (Jar jar) {
 		// Creation of an iterator in order to go through jar classes
-		//Iterator<Entry<String, byte[]>> i = jar.classIterator().iterator();
 		this.savedJar = jar;
 		
 		for(Entry<String, byte[]> elem:jar) {
 			// Get the class data (byte form)
 			// Cast it into a class
-			//Class<?> c = defineClass(elem.getKey(),elem.getValue(),0,elem.getValue().length);
 			classList.put(elem.getKey(), elem.getValue());
 			
 		}
 	}
 
 	protected Class<?> findClass(String name) throws ClassNotFoundException {
-		// si deja charger
-		// si les parents possedent
-		// sinon : dans la map
 		
 		Class<?> res;
 		
